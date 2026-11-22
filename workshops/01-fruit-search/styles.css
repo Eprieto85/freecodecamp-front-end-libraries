@@ -1,0 +1,60 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", system-ui, Arial, sans-serif;
+  color: #fff7ed;
+  background: linear-gradient(160deg, #be123c 0%, #9a3412 55%, #431407 100%);
+}
+
+.shell { max-width: 560px; margin: 0 auto; padding: 40px 20px 32px; }
+
+.hero { text-align: center; margin-bottom: 24px; }
+.hero h1 { font-size: 2.6rem; margin: 12px 0 8px; letter-spacing: -0.02em; }
+.hero p { color: #fed7aa; line-height: 1.55; }
+.ep-note code { background: rgba(255, 255, 255, 0.12); padding: 1px 6px; border-radius: 6px; }
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#search-container {
+  background: #fff;
+  color: #1c1917;
+  border-radius: 20px;
+  padding: 26px;
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.35);
+}
+
+form { display: grid; gap: 8px; }
+label { font-weight: 700; }
+#search-input {
+  font: inherit;
+  padding: 12px 14px;
+  border: 1.5px solid #d6d3d1;
+  border-radius: 12px;
+}
+#search-input:focus { outline: none; border-color: #e11d48; box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.18); }
+
+.status { color: #78716c; font-size: 0.85rem; margin: 12px 0; }
+
+#results { display: flex; flex-wrap: wrap; gap: 8px; }
+.result-item {
+  margin: 0;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  background: #ffe4e6;
+  color: #9f1239;
+}
+.empty { margin: 0; color: #78716c; }
+
+.ep-footer { margin-top: 28px; text-align: center; color: #fed7aa; font-size: 0.8rem; line-height: 1.5; }
+.ep-footer a { color: #fde68a; }
+.ep-credit { margin-top: 8px; color: #fff7ed; }

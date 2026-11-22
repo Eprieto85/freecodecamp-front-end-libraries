@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeckFlip — Flashcard Quiz (TypeScript)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <span class="badge">TypeScript · interfaces · custom errors</span>
+      <h1>DeckFlip</h1>
+      <p>Click the card to flip it, browse your deck, delete cards or add your own. Empty fields throw a typed <code>InvalidUserInputError</code>.</p>
+    </header>
+
+    <section class="deck">
+      <p id="counter" class="counter"></p>
+
+      <div id="flashcard" role="button" tabindex="0" aria-label="Flip card">
+        <span id="card-side" class="side">Question</span>
+        <p id="card-text"></p>
+        <span class="hint">click to flip</span>
+      </div>
+
+      <div class="controls">
+        <button id="prev-btn" type="button">&larr; Prev</button>
+        <button id="delete-btn" type="button" class="danger">Delete card</button>
+        <button id="next-btn" type="button">Next &rarr;</button>
+      </div>
+    </section>
+
+    <form id="entry-form" class="entry">
+      <h2>Add a new card</h2>
+      <textarea id="front-text" placeholder="Question" rows="2"></textarea>
+      <textarea id="back-text" placeholder="Answer" rows="2"></textarea>
+      <p id="form-error" class="error" role="alert"></p>
+      <button type="submit">Add card</button>
+    </form>
+
+    <footer class="ep-footer">
+      <p class="ep-note">Based on the freeCodeCamp "Build a Flashcard Quiz App" certification project (Front-End Development Libraries v9). The requirements (FlashCard interface, currentCards, InvalidUserInputError) follow the platform's project; the interface, navigation and counter were designed for this page. Source in <code>index.ts</code>, compiled to <code>script.js</code>.</p>
+      <div class="ep-credit">Built by <strong>Edisson Prieto</strong> &middot; <a href="https://github.com/Eprieto85">GitHub</a> &middot; <a href="https://www.freecodecamp.org/eprieto">freeCodeCamp</a></div>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

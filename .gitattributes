@@ -1,0 +1,8 @@
+# Compiled output: do not count it in the GitHub language bar
+projects/04-flashcard-quiz/script.js linguist-generated=true
+projects/05-digital-pet-game/script.js linguist-generated=true
+
+# Source files
+*.tsx linguist-language=TypeScript
+*.ts linguist-language=TypeScript
+*.jsx linguist-language=JavaScript
