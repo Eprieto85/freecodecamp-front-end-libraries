@@ -25,15 +25,6 @@ const moodEmoji = {
     [PetMood.SICK]: "🤒",
     [PetMood.HUNGRY]: "🍖"
 };
-const moodLabel = {
-    [PetMood.HAPPY]: "Happy",
-    [PetMood.EXCITED]: "Excited",
-    [PetMood.CONTENT]: "Content",
-    [PetMood.SAD]: "Sad",
-    [PetMood.TIRED]: "Tired",
-    [PetMood.SICK]: "Sick",
-    [PetMood.HUNGRY]: "Hungry"
-};
 const clamp = (value) => Math.max(0, Math.min(100, value));
 function getMood(hunger, happiness, energy) {
     if (hunger > 70)
@@ -53,6 +44,7 @@ function getMood(hunger, happiness, energy) {
 const TICK_MS = 30000;
 const TICK_STEP = 10;
 const PetGame = () => {
+    EP.useLang(); // re-render when the language tab changes
     const [started, setStarted] = useState(false);
     const [petName, setPetName] = useState("");
     const [hunger, setHunger] = useState(0);
@@ -93,15 +85,15 @@ const PetGame = () => {
     if (!started) {
         return (React.createElement("div", { className: "base-container info-panel" },
             React.createElement("form", { className: "start-questions", onSubmit: handleStart },
-                React.createElement("label", { htmlFor: "pet-name" }, "Name your pet"),
-                React.createElement("input", { id: "pet-name", type: "text", placeholder: "e.g. Goldie" }),
-                React.createElement("button", { id: "set-name-btn", type: "submit" }, "Start"))));
+                React.createElement("label", { htmlFor: "pet-name" }, EP.t("name_label")),
+                React.createElement("input", { id: "pet-name", type: "text", placeholder: EP.t("name_ph") }),
+                React.createElement("button", { id: "set-name-btn", type: "submit" }, EP.t("start")))));
     }
     const mood = getMood(hunger, happiness, energy);
     const stats = [
-        { name: "Hunger", value: hunger, bad: true },
-        { name: "Happiness", value: happiness, bad: false },
-        { name: "Energy", value: energy, bad: false }
+        { name: "Hunger", label: EP.t("stat_hunger"), value: hunger, bad: true },
+        { name: "Happiness", label: EP.t("stat_happiness"), value: happiness, bad: false },
+        { name: "Energy", label: EP.t("stat_energy"), value: energy, bad: false }
     ];
     const level = (value, bad) => {
         const score = bad ? 100 - value : value;
@@ -112,17 +104,18 @@ const PetGame = () => {
         React.createElement("div", { className: "game-container" },
             React.createElement("div", { className: "pet-sprite" }, moodEmoji[mood]),
             React.createElement("p", { className: "mood" },
-                "Mood: ",
-                moodLabel[mood])),
+                EP.t("mood"),
+                ": ",
+                EP.t("mood_" + PetMood[mood].toLowerCase()))),
         React.createElement("div", { className: "stats-grid" }, stats.map((stat) => (React.createElement("div", { className: "stat stat-bar", key: stat.name },
             React.createElement("div", { className: "stat-header" },
-                React.createElement("span", { className: "stat-name" }, stat.name),
+                React.createElement("span", { className: "stat-name" }, stat.label),
                 React.createElement("span", { className: "stat-value" }, stat.value)),
             React.createElement("div", { className: "stat-progress" },
                 React.createElement("div", { className: "stat-fill " + level(stat.value, stat.bad), style: { width: stat.value + "%" } })))))),
         React.createElement("div", { className: "pet-buttons" },
-            React.createElement("button", { id: "eat-action", className: "pet-button", onClick: () => handleAction(Action.EAT) }, "Eat"),
-            React.createElement("button", { id: "play-action", className: "pet-button", onClick: () => handleAction(Action.PLAY) }, "Play"),
-            React.createElement("button", { id: "sleep-action", className: "pet-button", onClick: () => handleAction(Action.SLEEP) }, "Sleep"))));
+            React.createElement("button", { id: "eat-action", className: "pet-button", onClick: () => handleAction(Action.EAT) }, EP.t("eat")),
+            React.createElement("button", { id: "play-action", className: "pet-button", onClick: () => handleAction(Action.PLAY) }, EP.t("play")),
+            React.createElement("button", { id: "sleep-action", className: "pet-button", onClick: () => handleAction(Action.SLEEP) }, EP.t("sleep")))));
 };
 ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(PetGame, null));

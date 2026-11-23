@@ -8,6 +8,7 @@ const localFruits = [
 ];
 
 function FruitsSearch() {
+  EP.useLang(); // re-render when the language tab changes
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [searching, setSearching] = useState(false);
@@ -47,18 +48,18 @@ function FruitsSearch() {
   return (
     <div id="search-container">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="search-input">Search for fruits:</label>
+        <label htmlFor="search-input">{EP.t("label")}</label>
         <input
           id="search-input"
           type="search"
-          placeholder="Try “ap” or “berry”"
+          placeholder={EP.t("ph")}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
       </form>
 
       <p className="status">
-        {searching ? "Searching…" : query.trim() === "" ? "Start typing to search." : `${results.length} result(s)`}
+        {searching ? EP.t("searching") : query.trim() === "" ? EP.t("idle") : `${results.length} ${EP.t("results")}`}
       </p>
 
       <div id="results">
@@ -67,7 +68,7 @@ function FruitsSearch() {
             <p key={item} className="result-item">{item}</p>
           ))
         ) : (
-          !searching && query.trim() !== "" && <p className="empty">No results found</p>
+          !searching && query.trim() !== "" && <p className="empty">{EP.t("none")}</p>
         )}
       </div>
     </div>

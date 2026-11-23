@@ -4,25 +4,51 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PixelPal — Digital Pet Game (React + TypeScript)</title>
+  <link rel="stylesheet" href="../../shared/ep.css" />
   <link rel="stylesheet" href="styles.css" />
   <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
   <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
 </head>
 <body>
+  <nav class="ep-nav">
+    <a class="ep-logo" href="../../">EP · FE Project 05</a>
+    <div class="ep-badge" data-i18n="badge">freeCodeCamp · Front-End Libraries</div>
+    <div class="ep-lang">
+      <button class="ep-lb" data-lang="en">EN</button>
+      <button class="ep-lb" data-lang="es">ES</button>
+      <button class="ep-lb" data-lang="fr">FR</button>
+    </div>
+  </nav>
+
   <main class="shell">
     <header class="hero">
       <span class="badge">React · TypeScript · enums · Record</span>
       <h1>PixelPal</h1>
-      <p>Name your pet and keep it happy. Its mood is computed from Hunger, Happiness and Energy with a typed <code>PetMood</code> enum and a <code>Record</code> of emojis.</p>
+      <p data-i18n="hero_sub">Name your pet and keep it happy.</p>
     </header>
 
     <div id="root"></div>
-
-    <footer class="ep-footer">
-      <p class="ep-note">Based on the freeCodeCamp "Build a Digital Pet Game" certification project (Front-End Development Libraries v9). The requirements and the mood rules follow the platform's project; the interface and the progress bars were designed for this page. Source in <code>index.tsx</code>, compiled to <code>script.js</code>.</p>
-      <div class="ep-credit">Built by <strong>Edisson Prieto</strong> &middot; <a href="https://github.com/Eprieto85">GitHub</a> &middot; <a href="https://www.freecodecamp.org/eprieto">freeCodeCamp</a></div>
-    </footer>
   </main>
+
+  <footer class="ep-signature">
+    <p class="ep-note" data-i18n="note">Based on the freeCodeCamp "Build a Digital Pet Game" certification project (Front-End Development Libraries v9).</p>
+    <div class="ep-card">
+      <div class="ep-avatar">EP</div>
+      <div class="ep-who">
+        <span data-i18n="sig_built">Built by</span>
+        <strong>Edisson Prieto</strong>
+        <em data-i18n="sig_role">Front-End Developer in training</em>
+      </div>
+      <div class="ep-links">
+        <a href="https://github.com/Eprieto85">GitHub</a>
+        <a href="https://www.freecodecamp.org/eprieto">freeCodeCamp</a>
+        <a href="../../" data-i18n="sig_all">All projects</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="translations.js"></script>
+  <script src="../../shared/ep.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

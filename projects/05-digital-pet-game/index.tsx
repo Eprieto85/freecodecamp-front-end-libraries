@@ -1,3 +1,6 @@
+// Provided by ../../shared/ep.js (language tabs EN / ES / FR)
+declare const EP: { t(key: string): string; useLang(): string };
+
 const { useState, useEffect } = React;
 
 enum Action {
@@ -18,16 +21,6 @@ const moodEmoji: Record<PetMood, string> = {
   [PetMood.HUNGRY]: "🍖"
 };
 
-const moodLabel: Record<PetMood, string> = {
-  [PetMood.HAPPY]: "Happy",
-  [PetMood.EXCITED]: "Excited",
-  [PetMood.CONTENT]: "Content",
-  [PetMood.SAD]: "Sad",
-  [PetMood.TIRED]: "Tired",
-  [PetMood.SICK]: "Sick",
-  [PetMood.HUNGRY]: "Hungry"
-};
-
 const clamp = (value: number) => Math.max(0, Math.min(100, value));
 
 function getMood(hunger: number, happiness: number, energy: number): PetMood {
@@ -45,6 +38,7 @@ const TICK_MS = 30000;
 const TICK_STEP = 10;
 
 export const PetGame = () => {
+  EP.useLang(); // re-render when the language tab changes
   const [started, setStarted] = useState(false);
   const [petName, setPetName] = useState("");
   const [hunger, setHunger] = useState(0);
@@ -86,9 +80,9 @@ export const PetGame = () => {
     return (
       <div className="base-container info-panel">
         <form className="start-questions" onSubmit={handleStart}>
-          <label htmlFor="pet-name">Name your pet</label>
-          <input id="pet-name" type="text" placeholder="e.g. Goldie" />
-          <button id="set-name-btn" type="submit">Start</button>
+          <label htmlFor="pet-name">{EP.t("name_label")}</label>
+          <input id="pet-name" type="text" placeholder={EP.t("name_ph")} />
+          <button id="set-name-btn" type="submit">{EP.t("start")}</button>
         </form>
       </div>
     );
@@ -97,9 +91,9 @@ export const PetGame = () => {
   const mood = getMood(hunger, happiness, energy);
 
   const stats = [
-    { name: "Hunger", value: hunger, bad: true },
-    { name: "Happiness", value: happiness, bad: false },
-    { name: "Energy", value: energy, bad: false }
+    { name: "Hunger", label: EP.t("stat_hunger"), value: hunger, bad: true },
+    { name: "Happiness", label: EP.t("stat_happiness"), value: happiness, bad: false },
+    { name: "Energy", label: EP.t("stat_energy"), value: energy, bad: false }
   ];
 
   const level = (value: number, bad: boolean) => {
@@ -112,13 +106,13 @@ export const PetGame = () => {
       <h2 className="pet-name">{petName}</h2>
       <div className="game-container">
         <div className="pet-sprite">{moodEmoji[mood]}</div>
-        <p className="mood">Mood: {moodLabel[mood]}</p>
+        <p className="mood">{EP.t("mood")}: {EP.t("mood_" + PetMood[mood].toLowerCase())}</p>
       </div>
       <div className="stats-grid">
         {stats.map((stat) => (
           <div className="stat stat-bar" key={stat.name}>
             <div className="stat-header">
-              <span className="stat-name">{stat.name}</span>
+              <span className="stat-name">{stat.label}</span>
               <span className="stat-value">{stat.value}</span>
             </div>
             <div className="stat-progress">
@@ -131,9 +125,9 @@ export const PetGame = () => {
         ))}
       </div>
       <div className="pet-buttons">
-        <button id="eat-action" className="pet-button" onClick={() => handleAction(Action.EAT)}>Eat</button>
-        <button id="play-action" className="pet-button" onClick={() => handleAction(Action.PLAY)}>Play</button>
-        <button id="sleep-action" className="pet-button" onClick={() => handleAction(Action.SLEEP)}>Sleep</button>
+        <button id="eat-action" className="pet-button" onClick={() => handleAction(Action.EAT)}>{EP.t("eat")}</button>
+        <button id="play-action" className="pet-button" onClick={() => handleAction(Action.PLAY)}>{EP.t("play")}</button>
+        <button id="sleep-action" className="pet-button" onClick={() => handleAction(Action.SLEEP)}>{EP.t("sleep")}</button>
       </div>
     </div>
   );

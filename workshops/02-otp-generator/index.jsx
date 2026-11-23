@@ -3,6 +3,7 @@ const { useState, useEffect, useRef } = React;
 const DURATION = 5;
 
 const OTPGenerator = () => {
+  EP.useLang(); // re-render when the language tab changes
   const [otp, setOtp] = useState("");
   const [timeLeft, setTimeLeft] = useState(0);
   const [isActive, setIsActive] = useState(false);
@@ -39,23 +40,23 @@ const OTPGenerator = () => {
 
   let timerText = "";
   if (expired) {
-    timerText = "OTP expired. Click the button to generate a new OTP.";
+    timerText = EP.t("expired");
   } else if (isActive) {
-    timerText = `Expires in: ${timeLeft} seconds`;
+    timerText = EP.t("expires").replace("{n}", timeLeft);
   }
 
   const progress = isActive ? (timeLeft / DURATION) * 100 : 0;
 
   return (
     <div className="container">
-      <h1 id="otp-title">OTP Generator</h1>
+      <h1 id="otp-title">{EP.t("title")}</h1>
       <h2 id="otp-display" className={expired ? "dead" : ""}>
-        {otp ? otp : "Click 'Generate OTP' to get a code"}
+        {otp ? otp : EP.t("initial")}
       </h2>
       <div className="bar"><div className="bar-fill" style={{ width: progress + "%" }} /></div>
       <p id="otp-timer" aria-live="polite">{timerText}</p>
       <button id="generate-otp-button" onClick={generateOTP} disabled={isActive}>
-        Generate OTP
+        {EP.t("button")}
       </button>
     </div>
   );

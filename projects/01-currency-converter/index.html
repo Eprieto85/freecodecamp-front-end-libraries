@@ -4,26 +4,52 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ExchangeLab — Currency Converter (React)</title>
+  <link rel="stylesheet" href="../../shared/ep.css" />
   <link rel="stylesheet" href="styles.css" />
   <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
   <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.4/babel.min.js"></script>
 </head>
 <body>
+  <nav class="ep-nav">
+    <a class="ep-logo" href="../../">EP · FE Project 01</a>
+    <div class="ep-badge" data-i18n="badge">freeCodeCamp · Front-End Libraries</div>
+    <div class="ep-lang">
+      <button class="ep-lb" data-lang="en">EN</button>
+      <button class="ep-lb" data-lang="es">ES</button>
+      <button class="ep-lb" data-lang="fr">FR</button>
+    </div>
+  </nav>
+
   <main class="shell">
     <header class="hero">
       <span class="badge">React · useState · useMemo</span>
       <h1>ExchangeLab</h1>
-      <p>Convert between four currencies. The conversion table is memoized: it is recalculated only when the amount or the source currency changes, never when you change the target.</p>
+      <p data-i18n="hero_sub">Convert between four currencies. The conversion table is memoized: it is recalculated only when the amount or the source currency changes, never when you change the target.</p>
     </header>
 
     <div id="root"></div>
-
-    <footer class="ep-footer">
-      <p class="ep-note">Based on the freeCodeCamp "Build a Currency Converter" certification project (Front-End Development Libraries v9). The requirements and the memoization logic follow the platform's project; the interface, the swap button and the rates table were designed for this page.</p>
-      <div class="ep-credit">Built by <strong>Edisson Prieto</strong> &middot; <a href="https://github.com/Eprieto85">GitHub</a> &middot; <a href="https://www.freecodecamp.org/eprieto">freeCodeCamp</a></div>
-    </footer>
   </main>
+
+  <footer class="ep-signature">
+    <p class="ep-note" data-i18n="note">Based on the freeCodeCamp "Build a Currency Converter" certification project (Front-End Development Libraries v9).</p>
+    <div class="ep-card">
+      <div class="ep-avatar">EP</div>
+      <div class="ep-who">
+        <span data-i18n="sig_built">Built by</span>
+        <strong>Edisson Prieto</strong>
+        <em data-i18n="sig_role">Front-End Developer in training</em>
+      </div>
+      <div class="ep-links">
+        <a href="https://github.com/Eprieto85">GitHub</a>
+        <a href="https://www.freecodecamp.org/eprieto">freeCodeCamp</a>
+        <a href="../../" data-i18n="sig_all">All projects</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="translations.js"></script>
+  <script src="../../shared/ep.js"></script>
   <script type="text/babel" src="index.jsx"></script>
 </body>
 </html>

@@ -1,3 +1,6 @@
+// Provided by ../../shared/ep.js (language tabs EN / ES / FR)
+declare const EP: { t(key: string): string };
+
 interface FlashCard {
   questionText: string;
   questionAnswer: string;
@@ -18,6 +21,8 @@ const currentCards: FlashCard[] = [
 ];
 
 let currentIndex = 0;
+let isFlipped = false;
+let errorKey = "";
 
 const flashcardEl = document.getElementById("flashcard") as HTMLDivElement;
 const cardTextEl = document.getElementById("card-text") as HTMLParagraphElement;
@@ -31,15 +36,28 @@ const entryForm = document.getElementById("entry-form") as HTMLFormElement;
 const frontText = document.getElementById("front-text") as HTMLTextAreaElement;
 const backText = document.getElementById("back-text") as HTMLTextAreaElement;
 
-function showCurrentCard(): void {
-  flashcardEl.classList.remove("flipped");
+// Draws the current state; also runs when the language tab changes.
+function render(): void {
   const card: FlashCard | undefined = currentCards[currentIndex];
-  cardSideEl.textContent = "Question";
-  cardTextEl.textContent = card ? card.questionText : "No cards left. Add a new one below.";
-  counterEl.textContent = card ? "Card " + (currentIndex + 1) + " of " + currentCards.length : "0 cards";
+  flashcardEl.classList.toggle("flipped", isFlipped && !!card);
+  cardSideEl.textContent = EP.t(isFlipped && card ? "answer" : "question");
+  if (!card) {
+    cardTextEl.textContent = EP.t("no_cards");
+  } else {
+    cardTextEl.textContent = isFlipped ? card.questionAnswer : card.questionText;
+  }
+  counterEl.textContent = card
+    ? EP.t("card") + " " + (currentIndex + 1) + " " + EP.t("of") + " " + currentCards.length
+    : "0 " + EP.t("cards");
   prevBtn.disabled = currentIndex <= 0;
   nextBtn.disabled = currentIndex >= currentCards.length - 1;
   deleteBtn.disabled = currentCards.length === 0;
+  errorEl.textContent = errorKey ? EP.t(errorKey) : "";
+}
+
+function showCurrentCard(): void {
+  isFlipped = false;
+  render();
 }
 
 function addCard(questionText: string, questionAnswer: string): void {
@@ -51,11 +69,9 @@ function addCard(questionText: string, questionAnswer: string): void {
 }
 
 flashcardEl.addEventListener("click", () => {
-  const card: FlashCard | undefined = currentCards[currentIndex];
-  if (!card) return;
-  const isFlipped = flashcardEl.classList.toggle("flipped");
-  cardSideEl.textContent = isFlipped ? "Answer" : "Question";
-  cardTextEl.textContent = isFlipped ? card.questionAnswer : card.questionText;
+  if (!currentCards[currentIndex]) return;
+  isFlipped = !isFlipped;
+  render();
 });
 
 deleteBtn.addEventListener("click", () => {
@@ -77,7 +93,7 @@ nextBtn.addEventListener("click", () => {
 
 entryForm.addEventListener("submit", (event: Event) => {
   event.preventDefault();
-  errorEl.textContent = "";
+  errorKey = "";
   try {
     addCard(frontText.value.trim(), backText.value.trim());
     frontText.value = "";
@@ -85,11 +101,14 @@ entryForm.addEventListener("submit", (event: Event) => {
     showCurrentCard();
   } catch (error) {
     if (error instanceof InvalidUserInputError) {
-      errorEl.textContent = error.message;
+      errorKey = "error_empty";
+      render();
     } else {
       throw error;
     }
   }
 });
+
+window.addEventListener("ep-lang", render);
 
 showCurrentCard();

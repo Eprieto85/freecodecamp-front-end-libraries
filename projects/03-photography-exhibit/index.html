@@ -4,13 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lumina Gallery — Photography Exhibit (Tailwind CSS)</title>
+  <link rel="stylesheet" href="../../shared/ep.css" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-stone-950 text-stone-100 antialiased">
+  <nav class="ep-nav">
+    <a class="ep-logo" href="../../">EP · FE Project 03</a>
+    <div class="ep-badge" data-i18n="badge">freeCodeCamp · Front-End Libraries</div>
+    <div class="ep-lang">
+      <button class="ep-lb" data-lang="en">EN</button>
+      <button class="ep-lb" data-lang="es">ES</button>
+      <button class="ep-lb" data-lang="fr">FR</button>
+    </div>
+  </nav>
+
   <header class="px-6 pt-14 pb-10 text-center">
     <span class="inline-block rounded-full border border-stone-600 px-3 py-1 text-xs tracking-widest text-stone-300 uppercase">Tailwind CSS · Grid · Utility classes</span>
     <h1 class="mt-4 text-4xl font-bold tracking-tight md:text-5xl">Lumina Gallery</h1>
-    <p class="mx-auto mt-3 max-w-xl text-stone-400">Three landscapes, one grid. The whole layout is built with Tailwind utility classes only — there is no custom CSS file.</p>
+    <p class="mx-auto mt-3 max-w-xl text-stone-400" data-i18n="hero_sub">Three landscapes, one grid.</p>
   </header>
 
   <main class="main-container mx-auto grid max-w-6xl grid-cols-1 gap-8 px-6 pb-16 md:grid-cols-3">
@@ -21,7 +32,7 @@
         class="h-64 w-full rounded-xl object-cover"
       />
       <h2 class="subheading mt-4 text-xl font-bold">Colosseo</h2>
-      <p class="description mt-1 text-sm text-stone-400">An ancient amphitheatre in the heart of Rome, glowing in the late afternoon light.</p>
+      <p class="description mt-1 text-sm text-stone-400" data-i18n="colosseo_desc">An ancient amphitheatre in the heart of Rome.</p>
     </article>
 
     <article class="card rounded-2xl bg-stone-900 p-4 shadow-xl ring-1 ring-stone-800 transition duration-300 hover:-translate-y-1 hover:ring-amber-400/60">
@@ -31,7 +42,7 @@
         class="h-64 w-full rounded-xl object-cover"
       />
       <h2 class="subheading mt-4 text-xl font-bold">Alps</h2>
-      <p class="description mt-1 text-sm text-stone-400">Snowy peaks catching the first light of the day above a sea of clouds.</p>
+      <p class="description mt-1 text-sm text-stone-400" data-i18n="alps_desc">Snowy peaks catching the first light of the day.</p>
     </article>
 
     <article class="card rounded-2xl bg-stone-900 p-4 shadow-xl ring-1 ring-stone-800 transition duration-300 hover:-translate-y-1 hover:ring-amber-400/60">
@@ -41,13 +52,28 @@
         class="h-64 w-full rounded-xl object-cover"
       />
       <h2 class="subheading mt-4 text-xl font-bold">Sea</h2>
-      <p class="description mt-1 text-sm text-stone-400">A calm morning by the coast, where the water meets the horizon.</p>
+      <p class="description mt-1 text-sm text-stone-400" data-i18n="sea_desc">A calm morning by the coast.</p>
     </article>
   </main>
 
-  <footer class="border-t border-stone-800 px-6 py-8 text-center text-xs leading-relaxed text-stone-500">
-    <p class="mx-auto max-w-2xl">Based on the freeCodeCamp "Design a Photography Exhibit" certification project (Front-End Development Libraries v9). The required structure (grid container, cards, subheadings, descriptions) follows the platform's project; the dark gallery design, hover effects and responsive layout were designed for this page. Photos: freeCodeCamp curriculum assets.</p>
-    <p class="mt-3 text-stone-300">Built by <strong>Edisson Prieto</strong> &middot; <a class="text-sky-400 hover:underline" href="https://github.com/Eprieto85">GitHub</a> &middot; <a class="text-sky-400 hover:underline" href="https://www.freecodecamp.org/eprieto">freeCodeCamp</a></p>
+  <footer class="ep-signature">
+    <p class="ep-note" data-i18n="note">Based on the freeCodeCamp "Design a Photography Exhibit" certification project (Front-End Development Libraries v9).</p>
+    <div class="ep-card">
+      <div class="ep-avatar">EP</div>
+      <div class="ep-who">
+        <span data-i18n="sig_built">Built by</span>
+        <strong>Edisson Prieto</strong>
+        <em data-i18n="sig_role">Front-End Developer in training</em>
+      </div>
+      <div class="ep-links">
+        <a href="https://github.com/Eprieto85">GitHub</a>
+        <a href="https://www.freecodecamp.org/eprieto">freeCodeCamp</a>
+        <a href="../../" data-i18n="sig_all">All projects</a>
+      </div>
+    </div>
   </footer>
+
+  <script src="translations.js"></script>
+  <script src="../../shared/ep.js"></script>
 </body>
 </html>

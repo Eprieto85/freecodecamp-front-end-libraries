@@ -23,6 +23,7 @@ function calculateWinner(squares) {
 }
 
 function Board() {
+  EP.useLang(); // re-render when the language tab changes
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
   const [score, setScore] = useState({ X: 0, O: 0, draws: 0 });
@@ -52,16 +53,16 @@ function Board() {
     setXIsNext(true);
   }
 
-  let status = "Next player: " + (xIsNext ? "X" : "O");
-  if (result) status = "Winner: " + result.player;
-  else if (isDraw) status = "Draw — nobody wins";
+  let status = EP.t("next") + (xIsNext ? "X" : "O");
+  if (result) status = EP.t("winner") + result.player;
+  else if (isDraw) status = EP.t("draw");
 
   return (
     <section className="game">
       <div className="scoreboard">
-        <div className="score x"><span>Player X</span><strong>{score.X}</strong></div>
-        <div className="score"><span>Draws</span><strong>{score.draws}</strong></div>
-        <div className="score o"><span>Player O</span><strong>{score.O}</strong></div>
+        <div className="score x"><span>{EP.t("player_x")}</span><strong>{score.X}</strong></div>
+        <div className="score"><span>{EP.t("draws")}</span><strong>{score.draws}</strong></div>
+        <div className="score o"><span>{EP.t("player_o")}</span><strong>{score.O}</strong></div>
       </div>
 
       <p id="status" className={result || isDraw ? "status done" : "status"}>{status}</p>
@@ -74,7 +75,7 @@ function Board() {
               key={index}
               className={"square" + (value ? " " + value.toLowerCase() : "") + (winning ? " win" : "")}
               onClick={() => handleClick(index)}
-              aria-label={"Square " + (index + 1)}
+              aria-label={EP.t("square") + (index + 1)}
             >
               {value}
             </button>
@@ -82,7 +83,7 @@ function Board() {
         })}
       </div>
 
-      <button id="reset" onClick={handleReset}>New round</button>
+      <button id="reset" onClick={handleReset}>{EP.t("reset")}</button>
     </section>
   );
 }

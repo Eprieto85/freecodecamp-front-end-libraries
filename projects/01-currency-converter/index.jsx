@@ -8,16 +8,10 @@ const rates = {
   JPY: 156.7
 };
 
-const names = {
-  USD: "US Dollar",
-  EUR: "Euro",
-  GBP: "British Pound",
-  JPY: "Japanese Yen"
-};
-
 const currencies = Object.keys(rates);
 
 function CurrencyConverter() {
+  EP.useLang(); // re-render when the language tab changes
   const [amount, setAmount] = useState(100);
   const [from, setFrom] = useState("USD");
   const [to, setTo] = useState("EUR");
@@ -39,7 +33,7 @@ function CurrencyConverter() {
     <section className="card" id="converter">
       <div className="fields">
         <label>
-          Amount
+          {EP.t("amount")}
           <input
             type="number"
             min="0"
@@ -48,19 +42,19 @@ function CurrencyConverter() {
           />
         </label>
         <label>
-          From
+          {EP.t("from")}
           <select value={from} onChange={(e) => setFrom(e.target.value)}>
             {currencies.map((code) => (
-              <option key={code} value={code}>{code} — {names[code]}</option>
+              <option key={code} value={code}>{code} — {EP.t(code)}</option>
             ))}
           </select>
         </label>
-        <button className="swap" type="button" onClick={swap} aria-label="Swap currencies">⇄</button>
+        <button className="swap" type="button" onClick={swap} aria-label={EP.t("swap")}>⇄</button>
         <label>
-          To
+          {EP.t("to")}
           <select value={to} onChange={(e) => setTo(e.target.value)}>
             {currencies.map((code) => (
-              <option key={code} value={code}>{code} — {names[code]}</option>
+              <option key={code} value={code}>{code} — {EP.t(code)}</option>
             ))}
           </select>
         </label>
@@ -71,7 +65,7 @@ function CurrencyConverter() {
         <p id="result">{convertedAmounts[to]} {to}</p>
       </div>
 
-      <h2>Same amount in every currency</h2>
+      <h2>{EP.t("table_title")}</h2>
       <ul className="table">
         {currencies.map((code) => (
           <li key={code} className={code === to ? "active" : ""}>

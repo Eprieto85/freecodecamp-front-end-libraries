@@ -4,7 +4,7 @@ Interactive React, TypeScript and Tailwind CSS projects built while completing t
 
 🌐 **Live site:** [eprieto85.github.io/freecodecamp-front-end-libraries](https://eprieto85.github.io/freecodecamp-front-end-libraries/)
 
-> **✅ Curriculum completed — November 22, 2026 · 528 of 528 steps · Certification exam: pending**
+> **🏅 Certified — November 23, 2026 · 528 of 528 steps · Certification exam passed (96%)** · [View certificate](https://www.freecodecamp.org/certification/eprieto/front-end-development-libraries-v9)
 
 **Related repositories:** [freecodecamp-responsive-web-design](https://github.com/Eprieto85/freecodecamp-responsive-web-design) (Certification 1, HTML & CSS) · [freecodecamp-javascript](https://github.com/Eprieto85/freecodecamp-javascript) (Certification 2, JavaScript)
 
@@ -14,7 +14,7 @@ Interactive React, TypeScript and Tailwind CSS projects built while completing t
 
 The exercises follow the freeCodeCamp curriculum: the base logic and requirements come from the platform's projects, labs and workshops. What I added is the layer on top: a custom interface for each one, extra interaction, and presentation made for a visitor who wants to see the result working. The code was typed and tested by me while solving each exercise on the platform. Each page states its origin in the footer.
 
-React pages load React 18 from a CDN. Projects 04 and 05 are written in TypeScript (`index.ts` / `index.tsx`) and compiled to `script.js`.
+Every page has language tabs (**EN / ES / FR**) and a signature card in the footer; both come from the shared files in [`shared/`](./shared/). React pages load React 18 from a CDN. Projects 04 and 05 are written in TypeScript (`index.ts` / `index.tsx`) and compiled to `script.js`.
 
 ---
 
@@ -56,7 +56,7 @@ React pages load React 18 from a CDN. Projects 04 and 05 are written in TypeScri
 | 10 | Certification project — Flashcard Quiz App | ✅ Completed |
 | 11 | Certification project — Digital Pet Game | ✅ Completed |
 | 12 | Front-end libraries review | ✅ Completed |
-| — | Certification exam | ⬜ Pending |
+| — | Certification exam | ✅ Passed (96%) |
 
 ---
 

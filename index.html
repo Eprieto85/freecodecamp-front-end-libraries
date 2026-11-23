@@ -4,12 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Front-End Development Libraries — Edisson Prieto</title>
+  <link rel="stylesheet" href="shared/ep.css" />
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; font-family: "Segoe UI", system-ui, Arial, sans-serif; color: #e2e8f0; background: #0b1120; }
-    header { padding: 56px 20px 28px; text-align: center; background: radial-gradient(circle at 50% 0%, #1e3a8a 0%, #0b1120 70%); }
-    header h1 { margin: 0 0 8px; font-size: 2.4rem; letter-spacing: -0.02em; }
-    header p { margin: 0 auto; max-width: 560px; color: #94a3b8; line-height: 1.55; }
+    header.hero { padding: 56px 20px 28px; text-align: center; background: radial-gradient(circle at 50% 0%, #1e3a8a 0%, #0b1120 70%); }
+    header.hero h1 { margin: 0 0 8px; font-size: 2.4rem; letter-spacing: -0.02em; }
+    header.hero p { margin: 0 auto; max-width: 560px; color: #94a3b8; line-height: 1.55; }
     h2 { max-width: 1040px; margin: 36px auto 14px; padding: 0 20px; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: #93c5fd; }
     .grid { max-width: 1040px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
     a.card { display: block; padding: 22px; border-radius: 16px; text-decoration: none; color: inherit; background: #131c31; border: 1px solid #1e293b; transition: transform 0.15s, border-color 0.15s; }
@@ -18,35 +19,58 @@
     .card h3 { margin: 6px 0 6px; font-size: 1.2rem; }
     .card p { margin: 0 0 12px; color: #94a3b8; font-size: 0.9rem; line-height: 1.5; }
     .tags span { display: inline-block; margin: 0 6px 6px 0; padding: 2px 10px; border-radius: 999px; font-size: 0.72rem; background: #1e293b; color: #bfdbfe; }
-    footer { max-width: 760px; margin: 44px auto 0; padding: 24px 20px 40px; text-align: center; color: #64748b; font-size: 0.8rem; line-height: 1.5; border-top: 1px solid #1e293b; }
-    footer a { color: #60a5fa; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Front-End Development Libraries</h1>
-    <p>Live demos from the freeCodeCamp certification: React, TypeScript and Tailwind CSS. Click a card to open the project.</p>
+  <nav class="ep-nav">
+    <a class="ep-logo" href="./">EP · Front-End Libraries</a>
+    <div class="ep-badge" data-i18n="badge">freeCodeCamp · Front-End Libraries</div>
+    <div class="ep-lang">
+      <button class="ep-lb" data-lang="en">EN</button>
+      <button class="ep-lb" data-lang="es">ES</button>
+      <button class="ep-lb" data-lang="fr">FR</button>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1 data-i18n="title">Front-End Development Libraries</h1>
+    <p data-i18n="hero_sub">Live demos from the freeCodeCamp certification.</p>
   </header>
 
-  <h2>Certification projects</h2>
+  <h2 data-i18n="h_projects">Certification projects</h2>
   <div class="grid">
-    <a class="card" href="projects/01-currency-converter/"><span class="num">PROJECT 01</span><h3>ExchangeLab</h3><p>Currency converter with a memoized conversion table.</p><div class="tags"><span>React</span><span>useMemo</span></div></a>
-    <a class="card" href="projects/02-tic-tac-toe/"><span class="num">PROJECT 02</span><h3>GridDuel</h3><p>Tic-tac-toe with scoreboard and highlighted winning line.</p><div class="tags"><span>React</span><span>useState</span></div></a>
-    <a class="card" href="projects/03-photography-exhibit/"><span class="num">PROJECT 03</span><h3>Lumina Gallery</h3><p>Photography exhibit built only with utility classes.</p><div class="tags"><span>Tailwind CSS</span><span>Grid</span></div></a>
-    <a class="card" href="projects/04-flashcard-quiz/"><span class="num">PROJECT 04</span><h3>DeckFlip</h3><p>Flip, browse, add and delete flashcards with typed errors.</p><div class="tags"><span>TypeScript</span><span>DOM</span></div></a>
-    <a class="card" href="projects/05-digital-pet-game/"><span class="num">PROJECT 05</span><h3>PixelPal</h3><p>A pet whose mood depends on hunger, energy and happiness.</p><div class="tags"><span>React</span><span>TypeScript</span><span>enum</span></div></a>
+    <a class="card" href="projects/01-currency-converter/"><span class="num"><span data-i18n="project">PROJECT</span> 01</span><h3>ExchangeLab</h3><p data-i18n="p1">Currency converter with a memoized conversion table.</p><div class="tags"><span>React</span><span>useMemo</span></div></a>
+    <a class="card" href="projects/02-tic-tac-toe/"><span class="num"><span data-i18n="project">PROJECT</span> 02</span><h3>GridDuel</h3><p data-i18n="p2">Tic-tac-toe with scoreboard and highlighted winning line.</p><div class="tags"><span>React</span><span>useState</span></div></a>
+    <a class="card" href="projects/03-photography-exhibit/"><span class="num"><span data-i18n="project">PROJECT</span> 03</span><h3>Lumina Gallery</h3><p data-i18n="p3">Photography exhibit built only with utility classes.</p><div class="tags"><span>Tailwind CSS</span><span>Grid</span></div></a>
+    <a class="card" href="projects/04-flashcard-quiz/"><span class="num"><span data-i18n="project">PROJECT</span> 04</span><h3>DeckFlip</h3><p data-i18n="p4">Flip, browse, add and delete flashcards with typed errors.</p><div class="tags"><span>TypeScript</span><span>DOM</span></div></a>
+    <a class="card" href="projects/05-digital-pet-game/"><span class="num"><span data-i18n="project">PROJECT</span> 05</span><h3>PixelPal</h3><p data-i18n="p5">A pet whose mood depends on hunger, energy and happiness.</p><div class="tags"><span>React</span><span>TypeScript</span><span>enum</span></div></a>
   </div>
 
-  <h2>Workshops and labs</h2>
+  <h2 data-i18n="h_workshops">Workshops and labs</h2>
   <div class="grid">
-    <a class="card" href="workshops/01-fruit-search/"><span class="num">WORKSHOP 01</span><h3>FruitFinder</h3><p>Debounced search with fetch and effect cleanup.</p><div class="tags"><span>React</span><span>useEffect</span></div></a>
-    <a class="card" href="workshops/02-otp-generator/"><span class="num">LAB 02</span><h3>OneTime</h3><p>Six-digit code that expires after five seconds.</p><div class="tags"><span>React</span><span>useRef</span></div></a>
-    <a class="card" href="workshops/03-pricing-component/"><span class="num">WORKSHOP 03</span><h3>PlanPicker</h3><p>Three-tier pricing cards, fully responsive.</p><div class="tags"><span>Tailwind CSS</span></div></a>
+    <a class="card" href="workshops/01-fruit-search/"><span class="num"><span data-i18n="workshop">WORKSHOP</span> 01</span><h3>FruitFinder</h3><p data-i18n="w1">Debounced search with fetch and effect cleanup.</p><div class="tags"><span>React</span><span>useEffect</span></div></a>
+    <a class="card" href="workshops/02-otp-generator/"><span class="num"><span data-i18n="lab">LAB</span> 02</span><h3>OneTime</h3><p data-i18n="w2">Six-digit code that expires after five seconds.</p><div class="tags"><span>React</span><span>useRef</span></div></a>
+    <a class="card" href="workshops/03-pricing-component/"><span class="num"><span data-i18n="workshop">WORKSHOP</span> 03</span><h3>PlanPicker</h3><p data-i18n="w3">Three-tier pricing cards, fully responsive.</p><div class="tags"><span>Tailwind CSS</span></div></a>
   </div>
 
-  <footer>
-    Built by <strong>Edisson Prieto</strong> &middot; <a href="https://github.com/Eprieto85">GitHub</a> &middot; <a href="https://www.freecodecamp.org/eprieto">freeCodeCamp</a><br />
-    Each page states in its footer which freeCodeCamp project or workshop it is based on.
+  <footer class="ep-signature">
+    <p class="ep-note" data-i18n="note">Each page states in its footer which freeCodeCamp project or workshop it is based on.</p>
+    <div class="ep-card">
+      <div class="ep-avatar">EP</div>
+      <div class="ep-who">
+        <span data-i18n="sig_built">Built by</span>
+        <strong>Edisson Prieto</strong>
+        <em data-i18n="sig_role">Front-End Developer in training</em>
+      </div>
+      <div class="ep-links">
+        <a href="https://github.com/Eprieto85">GitHub</a>
+        <a href="https://www.freecodecamp.org/eprieto">freeCodeCamp</a>
+        <a href="https://github.com/Eprieto85/freecodecamp-front-end-libraries" data-i18n="sig_repo">Source code</a>
+      </div>
+    </div>
   </footer>
+
+  <script src="translations.js"></script>
+  <script src="shared/ep.js"></script>
 </body>
 </html>
